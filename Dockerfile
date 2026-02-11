@@ -1,12 +1,11 @@
-# Use the official n8n image as the base
+# Use the official n8n image (Alpine based)
 FROM n8nio/n8n:latest
 
-# Switch to root user to install software
+# Switch to root to install software
 USER root
 
-# Install FFmpeg (required for video editing)
-# We use apt-get because the standard n8n image is Debian-based
-RUN apt-get update && apt-get install -y ffmpeg
+# Install FFmpeg (Essential for your video generation)
+RUN apk add --no-cache ffmpeg
 
-# Switch back to the 'node' user for security (standard n8n practice)
+# Switch back to node user for security
 USER node
